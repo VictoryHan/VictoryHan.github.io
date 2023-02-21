@@ -363,7 +363,11 @@ git remote remove 远程库地址别名
 </center>
 
 **克隆**
-`git clone [远程地址]`
+
+`git clone [远程地址]`(默认master分支)
+
+`git clone [远程库地址] -b [分支名]`（指定分支）
+
 效果：
 1、完整的把远程库下载到本地
 2、创建远程地址别名
@@ -389,18 +393,30 @@ git remote remove 远程库地址别名
 </center>
 
 **拉取**
+
 pull=fetch+merge
+
 `git fetch 远程库地址别名 远程分支名`
+
 `git merge 远程库地址别名 远程分支名`
+
 `git pull  远程库地址别名 远程分支名`
+
 fetch 是将远程库的内容仅仅下载到本地
+
 merge 是将远程库的内容与本地库的内容合并
+
 **解决远程库和本地库冲突**
+
 如果不是基于Github远程库的最新版本所做的修改，不能推送，必须先拉取。
 拉取下来后如果进入冲突状态，则按照上面"解决冲突"操作解决即可。
+
 **设置git push和pull的默认远程分支**
+
 `git branch --set-upstream-to=远程库地址别名/远程分支名 本地分知名`
+
 示例：
+
 `git branch --set-upstream-to=origin/master master`
 
 ### 跨团队协作

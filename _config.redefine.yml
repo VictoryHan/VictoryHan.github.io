@@ -16,7 +16,7 @@ style:
   primary_color: "#005080"
 
   # Avatar (You can use local image or image external link)
-  avatar: /images/redefine-avatar.svg # avatar of the author
+  avatar: /avatar/redefine-avatar.svg # avatar of the author
 
   # Favicon (You can use local image or image external link)
   favicon: /images/redefine-logo.svg # favicon of the site
