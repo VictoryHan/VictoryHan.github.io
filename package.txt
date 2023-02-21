@@ -3,3 +3,4 @@ npm install hexo-theme-redefine@latest
 npm install hexo-wordcount
 npm install hexo-generator-searchdb
 npm install hexo-generator-feed
+npm install hexo-image-link --save
