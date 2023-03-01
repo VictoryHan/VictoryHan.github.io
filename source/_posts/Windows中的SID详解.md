@@ -5,7 +5,7 @@ categories:
             - [运维]
             - [网络安全]
 tags:
-    - Windwos
+    - Windows
 ---
 # SID详解
 ## 前言
