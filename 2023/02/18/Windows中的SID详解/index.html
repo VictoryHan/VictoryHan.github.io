@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="博客,Blogs,计算机,网络安全,前端,后端,python,java,html,css,js">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="VictoryHan">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://victoryhan.top/2023/02/18/windows中的sid详解/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Windows中的SID详解">
+    <meta property="og:description" content="Hexo Theme Redefine">
+    <meta property="og:url" content="https://victoryhan.top2023/02/18/Windows中的SID详解/">
+    <meta property="og:image" content="/images/redefine-logo.svg">
+    <meta property="og:site_name" content="小韩的博客">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Windows中的SID详解">
+    <meta name="twitter:description" content="Hexo Theme Redefine">
+    <meta name="twitter:image" content="/images/redefine-logo.svg">
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <meta name="theme-color" content="#005080">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            Windows中的SID详解 -
+        
+        小韩的博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/assets/fonts.css">
+    
+    
+    
+    
+        <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"victoryhan.top","root":"/","language":"zh-CN","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/avatar/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"莫听穿林打叶声，何妨吟啸且徐行","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac","custom_font":{"enable":false,"font_family":null,"font_url":null}},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.1.2","friend_links":{"columns":3},"home_article":{"date_format":"auto","category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":3}},"plugins":{"aplayer":{"enable":false,"audio":[{"name":null,"artist":null,"url":null,"cover":null},{"name":null,"artist":null,"url":null,"cover":null}]}}};
+    REDEFINE.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+    
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/fontawesome/regular.min.css">
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小韩的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="menu-wrapper">
+    
+    <div class="menu-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                小韩的博客
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/tags"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-tag"></i>
+                                        
+                                        标签
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        归档
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">我
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://gitee.com/victoryhan">GITEE
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://www.cnblogs.com/victoryhan/">博客园
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43704652">CSDN
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/today-38-74">知乎
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    target="_blank" rel="noopener" href="https://www.google.com"  >
+                                    
+                                        
+                                        GOOGLE
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    target="_blank" rel="noopener" href="https://www.baidu.com"  >
+                                    
+                                        
+                                        百度
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    target="_blank" rel="noopener" href="https://www.github.com"  >
+                                    
+                                        
+                                        GITHUB
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="menu-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/tags"  >
+                             
+                                
+                                    <i class="fa-regular fa-tag"></i>
+                                
+                                标签
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                归档
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">我</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://gitee.com/victoryhan">GITEE</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://www.cnblogs.com/victoryhan/">博客园</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43704652">CSDN</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://www.zhihu.com/people/today-38-74">知乎</a>
+                            </li>
+                        
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        target="_blank" rel="noopener" href="https://www.google.com"  >
+                             
+                                
+                                GOOGLE
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        target="_blank" rel="noopener" href="https://www.baidu.com"  >
+                             
+                                
+                                百度
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        target="_blank" rel="noopener" href="https://www.github.com"  >
+                             
+                                
+                                GITHUB
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">Windows中的SID详解</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/avatar/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">VictoryHan</span>
+                            
+                                <span class="author-label">Lv2</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-02-18 21:31:46</span>
+        <span class="mobile">2023-02-18 21:31</span>
+        <span class="hover-info">创建时间</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="pc">2023-02-24 10:17:52</span>
+            <span class="mobile">2023-02-24 10:17</span>
+            <span class="hover-info">更新时间</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E8%BF%90%E7%BB%B4/">运维</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Windows/">Windows</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>3.8k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>14 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="SID详解"><a href="#SID详解" class="headerlink" title="SID详解"></a>SID详解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>SID也就是安全标识符（Security Identifiers），是标识用户、组和计算机帐户的唯一的号码。在第一次创建该帐户时，将给网络上的每一个帐户发布一个唯一的 SID。Windows 2000 中的内部进程将引用帐户的 SID 而不是帐户的用户或组名。如果创建帐户，再删除帐户，然后使用相同的用户名创建另一个帐户，则新帐户将不具有授权给前一个帐户的权力或权限，原因是该帐户具有不同的 SID 号。安全标识符也被称为安全 ID 或 SID。 </p>
+<h2 id="SID的作用"><a href="#SID的作用" class="headerlink" title="SID的作用"></a>SID的作用</h2><p>用户通过验证后，登陆进程会给用户一个访问令牌，该令牌相当于用户访问系统资源的票证，当用户试图访问系统资源时，将访问令牌提供给 Windows NT，然后 Windows NT 检查用户试图访问对象上的访问控制列表。如果用户被允许访问该对象，Windows NT将会分配给用户适当的访问权限。<br>访问令牌是用户在通过验证的时候有登陆进程所提供的，所以改变用户的权限需要注销后重新登陆，重新获取访问令牌。</p>
+<h2 id="SID号码的组成"><a href="#SID号码的组成" class="headerlink" title="SID号码的组成"></a>SID号码的组成</h2><p>如果存在两个同样SID的用户，这两个帐户将被鉴别为同一个帐户，原理上如果帐户无限制增加的时候，会产生同样的SID，在通常的情况下SID是唯一的，他由计算机名、当前时间、当前用户态线程的CPU耗费时间的总和三个参数决定以保证它的唯一性。</p>
+<p>一个完整的SID包括：<br>• 用户和组的安全描述<br>• 48-bit的ID authority<br>• 修订版本<br>• 可变的验证值Variable sub-authority values<br>例：S-1-5-21-310440588-250036847-580389505-500<br>我们来先分析这个重要的SID。第一项S表示该字符串是SID；第二项是SID的版本号，对于2000来说，这个就是1；然后是标志符的颁发机构（identifier authority），对于2000内的帐户，颁发机构就是NT，值是5。然后表示一系列的子颁发机构，前面几项是标志域的，最后一个标志着域内的帐户和组。</p>
+<h2 id="SID的获得"><a href="#SID的获得" class="headerlink" title="SID的获得"></a>SID的获得</h2><p>开始－运行－regedt32－HKEY_LOCAL_MACHINE\SAM\SAM\Domains\Builtin\Aliases\Members，找到本地的域的代码，展开后，得到的就是本地帐号的所有SID列表。<br>其中很多值都是固定的，比如第一个000001F4（16进制），换算成十进制是500，说明是系统建立的内置管理员帐号administrator，000001F5换算成10进制是501，也就是GUEST帐号了，详细的参照后面的列表。<br>这一项默认是system可以完全控制，这也就是为什么要获得这个需要一个System的Cmd的Shell的原因了，当然如果权限足够的话你可以把你要添加的帐号添加进去。<br>或者使用Support Tools的Reg工具：<br>reg query “HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList</p>
+<p>还有一种方法可以获得SID和用户名称的对应关系：</p>
+<ol>
+<li>Regedt32:<br>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion \ProfileList</li>
+<li>这个时候可以在左侧的窗口看到SID的值，可以在右侧的窗口中ProfileImagePath看到不同的SID关联的用户名，<br>比如%SystemDrive%\Documents and Settings\Administrator.momo这个对应的就是本地机器的管理员SID<br>%SystemDrive%\Documents and Settings\Administrator.domain这个就是对应域的管理员的帐户</li>
+</ol>
+<p>另外微软的ResourceKit里面也提供了工具getsid，sysinternals的工具包里面也有Psgetsid，其实感觉原理都是读取注册表的值罢了，就是省了一些事情。</p>
+<h2 id="SID重复问题的产生"><a href="#SID重复问题的产生" class="headerlink" title="SID重复问题的产生"></a>SID重复问题的产生</h2><p>安装NT／2000系统的时候，产生了一个唯一的SID，但是当你使用类似Ghost的软件克隆机器的时候，就会产生不同的机器使用一个SID的问题。产生了很严重的安全问题。<br>同样，如果是重复的SID对于对等网来说也会产生很多安全方面的问题。在对等网中帐号的基础是SID加上一个相关的标识符（RID），如果所有的工作站都拥有一样的SID，每个工作站上产生的第一个帐号都是一样的，这样就对用户本身的文件夹和文件的安全产生了隐患。<br>这个时候某个人在自己的NTFS分区建立了共享，并且设置了自己可以访问，但是实际上另外一台机器的SID号码和这个一样的用户此时也是可以访问这个共享的。</p>
+<h2 id="SID重复问题的解决"><a href="#SID重复问题的解决" class="headerlink" title="SID重复问题的解决"></a>SID重复问题的解决</h2><p>下面的几个试验带有高危险性，慎用，我已经付出了惨痛的代价！<br>微软在ResourceKit里面提供了一个工具，叫做SYSPREP,这个可以用在克隆一台工作站以前产生一个新的SID号码。 下图是他的参数</p>
+<p>这个工具在DC上是不能运行这个命令的，否则会提示</p>
+<p>但是这个工具并不是把所有的帐户完全的产生新的SID，而是针对两个主要的帐户Administrator和Guest，其他的帐号仍然使用原有的SID。<br>下面做一个试验，先获得目前帐号的SID：<br>S-1-5-21-2000478354-688789844-839522115<br>然后运行Sysprep，出现提示窗口：</p>
+<p>确定以后需要重启，然后安装程序需要重新设置计算机名称、管理员口令等，但是登陆的时候还是需要输入原帐号的口令。<br>进入2000以后，再次查询SID，得到：<br>S-1-5-21-759461550-145307086-515799519，发现SID号已经得到了改变，查询注册表，发现注册表已经全部修改了，当然全部修改了?。</p>
+<p>另外sysinternals公司也提供了类似的工具NTSID，这个到后来才发现是针对NT4的产品，界面如下：</p>
+<p>他可不会提示什么再DC上不能用，接受了就开始，结果导致我的一台DC崩溃，重启后提示“安全账号管理器初始化失败，提供给识别代号颁发机构的值为无效值，错误状态0XC0000084，请按确定，重启到目录服务还原模式…”，即使切换到目录服务还原模式也再也进不去了！<br>想想自己胆子也够大的啊，好在是一台额外DC，但是自己用的机器，导致重装系统半天，重装软件N天?，所以再次提醒大家，做以上试验的时候一定要慎重，最好在一台无关紧要的机器上试验，否则出现问题我不负责哦?。另外在Ghost的新版企业版本中的控制台已经加入了修改SID的功能，自己还没有尝试，有兴趣的朋友可以自己试验一下，不过从原理上应该都是一样的。<br>文章发表之前，又发现了微软自己提供的一个工具“Riprep”，这个工具主要用做在远程安装的过程中，想要同时安装上应用程序。管理员安装了一个标准的公司桌面操作系统，并配置好应用软件和一些桌面设置之后，可以使用Riprep从这个标准的公司桌面系统制作一个Image文件。这个Image文件既包括了客户化的应用软件，又把每个桌面系统必须独占的安全ID、计算机账号等删除了。管理员可以它放到远程安装服务器上，供客户端远程启动进行安装时选用。但是要注意的是这个工具只能在单硬盘、单分区而且是Professional的机器上面用。</p>
+<p>下面是SID末尾RID值的列表，括号内为16进制：</p>
+<p>Built-In Users<br>DOMAINNAME\ADMINISTRATOR<br>S-1-5-21-917267712-1342860078-1792151419-500 (&#x3D;0x1F4)</p>
+<p>DOMAINNAME\GUEST<br>S-1-5-21-917267712-1342860078-1792151419-501 (&#x3D;0x1F5)<br>Built-In Global Groups<br>DOMAINNAME\DOMAIN ADMINS<br>S-1-5-21-917267712-1342860078-1792151419-512 (&#x3D;0x200)</p>
+<p>DOMAINNAME\DOMAIN USERS<br>S-1-5-21-917267712-1342860078-1792151419-513 (&#x3D;0x201)</p>
+<p>DOMAINNAME\DOMAIN GUESTS<br>S-1-5-21-917267712-1342860078-1792151419-514 (&#x3D;0x202)<br>Built-In Local Groups<br>BUILTIN\ADMINISTRATORS S-1-5-32-544 (&#x3D;0x220)<br>BUILTIN\USERS S-1-5-32-545 (&#x3D;0x221)<br>BUILTIN\GUESTS S-1-5-32-546 (&#x3D;0x222)<br>BUILTIN\ACCOUNT OPERATORS S-1-5-32-548 (&#x3D;0x224)<br>BUILTIN\SERVER OPERATORS S-1-5-32-549 (&#x3D;0x225)<br>BUILTIN\PRINT OPERATORS S-1-5-32-550 (&#x3D;0x226)<br>BUILTIN\BACKUP OPERATORS S-1-5-32-551 (&#x3D;0x227)<br>BUILTIN\REPLICATOR S-1-5-32-552 (&#x3D;0x228)<br>Special Groups<br>\CREATOR OWNER S-1-3-0<br>\EVERYONE S-1-1-0<br>NT AUTHORITY\NETWORK S-1-5-2<br>NT AUTHORITY\INTERACTIVE S-1-5-4<br>NT AUTHORITY\SYSTEM S-1-5-18<br>NT AUTHORITY\authenticated users S-1-5-11 *.(over)</p>
+<h2 id="如何修改镜像操作系统的SID"><a href="#如何修改镜像操作系统的SID" class="headerlink" title="如何修改镜像操作系统的SID"></a>如何修改镜像操作系统的SID</h2><p>SID也就是安全标识符（Security Identifiers），是标识用户、组和计算机帐户的唯一的号码。在第一次创建该帐户时，将给网络上的每一个帐户发布一个唯一的 SID。Windows 2000 中的内部进程将引用帐户的 SID 而不是帐户的用户或组名。如果创建帐户，再删除帐户，然后使用相同的用户名创建另一个帐户，则新帐户将不具有授权给前一个帐户的权力或权限，原因是该帐户具有不同的 SID 号。安全标识符也被称为安全 ID 或 SID。如果我们要想查看我们的SID有很多方法可以看见比如通过注册表就可以找到,另外我们也可以通过CMD中的命令来查看SID,用命令“whoami &#x2F;user”来查看用户的SID的</p>
+<p>SID我们也看见了，那到底该如何来修改操作系统SID呢？其实很简单，这里依windows server 2003操作系统为例，在windows server 2003操作系统的安装盘中有一个SUPPORT文件夹打开该文件夹找到TOOLS子文件夹,然后找到DEPLOY.CAB文件包进行解压, 解压完成之后，直接点击sysprep.exe文件会出现图二窗口，点击“工厂”按钮，计算机会自动关闭，然后打开计算机，再查看SID就可以看见SID已经被修改了。</p>
+<p>出处：<a class="link"   target="_blank" rel="noopener" href="http://lotus-3hao.blog.sohu.com/51996952.html" >http://lotus-3hao.blog.sohu.com/51996952.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;</p>
+<p>使用用Ghost制作的win2k3和winxp文件具有相同的SID的解决办法</p>
+<p>特别声明:这篇文档是从我的朋友发给我的邮件中整理的。我觉得非常好就把它共享出来，让大家分享。非常感谢他为我们作的贡献。</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>在Windows内部，每个账号具有一个惟一的Security ID，可以在HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion \ProfileList看到。SID是用来识别账户的惟一标志，而不是通常以为的机器名\用户名。而现有的Ghost文件是把整个安装好的系统分区直接备份下来，这样，当把这个Ghost文件恢复到别的机器上时，别的机器也具有了同样的SID（欲知SID更多详情，请参见<a class="link"   target="_blank" rel="noopener" href="http://www.winmag.com.cn/html/2005/03/20050324170613-1.shtml%EF%BC%89%E3%80%82" >http://www.winmag.com.cn/html/2005/03/20050324170613-1.shtml）。 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br>带来的问题：<br>1.潜在的安全问题。如果某台机器设置了一个共享目录，限制为只有本机Administrator才能完全访问，但实际上来自别的机器的Administrator也有可能访问。<br>2.在域中，涉及组策略等操作的话，也是以SID为机器或用户的惟一标志。如果LAN中存在重复的SID，组策略将不能正常工作。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>使用Windows XP和2003安装光盘中提供的附加工具Sysprep，它是专为在多台计算机上部署Windows而设计的工具，可以擦除并重新生成SID。Sysprep工具在安装光盘的support\tools\deploy.cab中，解压将得到10个文件。你可以使用任意语言的deploy.cab。</p>
+<h3 id="额外发现"><a href="#额外发现" class="headerlink" title="额外发现"></a>额外发现</h3><p>经过一天的研究，Sysprep除了重新生成SID之外，还可以为我们做这样两件非常好的事：<br>1.将Windows激活期限展期。<br>我们的测试环境中所使用的Windows XP和2003都是未激活的。受到激活期限的限制，我们不能使用真实时间，而是要根据Ghost文件的日期相应调整机器日期。比如Ghost文件日期不幸为2001年1月1日，测试机的日期就必须使用2001年1月的某天。这样的机器一旦加入其它时间的域中，将被同步时间而导致Windows过期。而经过Sysprep，Windows重启时将重新执行所有系统设置。重启之后Windows XP就可以重新恢复30天的激活日期，2003类推。想无限Sysprep吗？忘掉这个念头吧，早就试过了，Sysprep的展期功能只允许使用三次-_-b..正确的解决方法见后。<br>2.重新扫描硬件并安装驱动。<br>我们之前的Ghost文件中是已经安装有驱动程序的，所以这些Ghost文件只能对应于特定机型。如果将Dell 170L的Ghost恢复到了Dell 3000上，有时会出现驱动不能正常工作，但是又无法安装新驱动的情况（虽然他们都是Intel 865G芯片组，板载显卡网卡都一样……奇怪中）。<br>同样经过Sysprep，可以擦除HAL（硬件抽象层）信息，Windows重启时将重新扫描硬件。如果系统已经安装某些驱动文件，这些驱动会被自动识别。即使不能自动识别，也不会影响安装新的驱动。惟一的问题是暂时无法将若干种显卡、网卡、芯片组的驱动集成到一起，如果可以做到，今后我们使用Ghost备份就再也不用区分机型了，仅仅需要区分语言。但是实际上的Windows部署从来都是不带驱动的，驱动需要自行安装:(</p>
+<p>Sysprep简解：<br>将WinXP\pro\support\tools\delpoy.cab解压到本地文件夹中，将得到10个文件。其中的Sysprep.exe就是我们主要需要的。<br>下图是运行界面：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2023/02/18/Windows%E4%B8%AD%E7%9A%84SID%E8%AF%A6%E8%A7%A3/0.png"
+                      alt="在这里插入图片描述"
+                ></p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>第一个按钮Reseal就是我们所需要的“重新封装”，意即Windows将像重新安装一样去进行配置。<br>在点击Reseal之前，下方的Flags区域是可选项。Minisetup是我们惟一需要的，“最小化安装”，意即Windows仅保留文件，而不使用任何驱动和设置。如果不选此项，Reseal之后不会重新扫描硬件，而是仅仅重新生成SID。<br>其它选项，PnP指在重启后扫描非即插即用设备，这年头……似乎不用了吧；NoSIDGen指不生成SID，这是为了便于OEM商在单台计算机上恢复出厂设置用的，不需要重新生成SID；Pre-actived指不使用“展期”功能。</p>
+<p>Reseal重启之后会和使用光盘第一次安装一样，要求我们输入各种用户、网络、区域等信息。<br>系统当前时间等。</p>
+<center>
+
+<p>如果您乐意，感谢支持~</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2023/02/18/Windows%E4%B8%AD%E7%9A%84SID%E8%AF%A6%E8%A7%A3/1.png"
+                      alt="微信赞赏码"
+                ></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2023/02/18/Windows%E4%B8%AD%E7%9A%84SID%E8%AF%A6%E8%A7%A3/2.png"
+                      alt="支付宝收款码"
+                ></p>
+</center>
+
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Windows中的SID详解</li>
+        <li>本文作者：VictoryHan</li>
+        <li>创建时间：2023-02-18 21:31:46</li>
+        <li>
+            本文链接：https://victoryhan.top/2023/02/18/Windows中的SID详解/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Windows/">#Windows</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/02/21/Emmet%E8%AF%AD%E6%B3%95/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Emmet语法</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/02/18/Git%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Git基本结构</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;评论
+    </div>
+    
+
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-pjax>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'waline-peach-nine.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">Windows中的SID详解</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SID%E8%AF%A6%E8%A7%A3"><span class="nav-number">1.</span> <span class="nav-text">SID详解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SID%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.2.</span> <span class="nav-text">SID的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SID%E5%8F%B7%E7%A0%81%E7%9A%84%E7%BB%84%E6%88%90"><span class="nav-number">1.3.</span> <span class="nav-text">SID号码的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SID%E7%9A%84%E8%8E%B7%E5%BE%97"><span class="nav-number">1.4.</span> <span class="nav-text">SID的获得</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SID%E9%87%8D%E5%A4%8D%E9%97%AE%E9%A2%98%E7%9A%84%E4%BA%A7%E7%94%9F"><span class="nav-number">1.5.</span> <span class="nav-text">SID重复问题的产生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SID%E9%87%8D%E5%A4%8D%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3"><span class="nav-number">1.6.</span> <span class="nav-text">SID重复问题的解决</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E9%95%9C%E5%83%8F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84SID"><span class="nav-number">1.7.</span> <span class="nav-text">如何修改镜像操作系统的SID</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.7.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">1.7.2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%9D%E5%A4%96%E5%8F%91%E7%8E%B0"><span class="nav-number">1.7.3.</span> <span class="nav-text">额外发现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">1.7.4.</span> <span class="nav-text">说明</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">VictoryHan</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br> 
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.1.2</a>
+        </div>
+        
+        
+        
+            <div id="start_time_div" style="display:none">
+                2023/2/18 16:43:00
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="unfolded-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="folded-tools-list">
+        <li class="right-bottom-tools tool-toggle-show flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+</main>
+
+
+
+<script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/utils.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/main.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/layouts/menu-shrink.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/go-top-bottom.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/dark-light-toggle.js"></script>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/local-search.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/code-block.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/layouts/lazyload.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/runtime.js"></script>
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/layouts/odometer.min.js"></script>
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/assets/odometer-theme-minimal.css">
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/toc-toggle.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/libs/anime.min.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/layouts/toc.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/plugins/tabs.js"></script>
+    
+    
+</div>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="博客,Blogs,计算机,网络安全,前端,后端,python,java,html,css,js">
+    <meta name="description" content="Hexo Theme Redefine">
+    <meta name="author" content="VictoryHan">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-redefine.png">
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://victoryhan.top/2023/02/23/kms服务器搭建·windows·officekms激活/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="KMS服务器搭建·Windows·OfficeKMS激活">
+    <meta property="og:description" content="Hexo Theme Redefine">
+    <meta property="og:url" content="https://victoryhan.top2023/02/23/KMS服务器搭建·Windows·OfficeKMS激活/">
+    <meta property="og:image" content="/images/redefine-logo.svg">
+    <meta property="og:site_name" content="小韩的博客">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KMS服务器搭建·Windows·OfficeKMS激活">
+    <meta name="twitter:description" content="Hexo Theme Redefine">
+    <meta name="twitter:image" content="/images/redefine-logo.svg">
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-logo.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-logo.svg">
+    <meta name="theme-color" content="#005080">
+    <link rel="shortcut icon" href="/images/redefine-logo.svg">
+    
+    <title>
+        
+            KMS服务器搭建·Windows·OfficeKMS激活 -
+        
+        小韩的博客
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/assets/fonts.css">
+    
+    
+    
+    
+        <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+    
+    <script id="hexo-configurations">
+    let REDEFINE = window.REDEFINE || {};
+    REDEFINE.hexo_config = {"hostname":"victoryhan.top","root":"/","language":"zh-CN","path":"search.xml"};
+    REDEFINE.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#005080","avatar":"/avatar/redefine-avatar.svg","favicon":"/images/redefine-logo.svg","article_img_align":"center","right_side_width":"210px","content_max_width":"1000px","nav_color":{"left":"#f78736","right":"#367df7","transparency":35},"hover":{"shadow":true,"scale":false},"first_screen":{"enable":true,"background_image":{"light":"https://evan.beee.top/img/wallhaven-wqery6-light.webp","dark":"https://evan.beee.top/img/wallhaven-wqery6-dark.webp"},"title_color":{"light":"#fff","dark":"#d1d1b6"},"description":"莫听穿林打叶声，何妨吟啸且徐行","custom_font":{"enable":false,"font_family":null,"font_url":null}},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_block":{"copy":true,"style":"mac","custom_font":{"enable":false,"font_family":null,"font_url":null}},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"1.1.2","friend_links":{"columns":3},"home_article":{"date_format":"auto","category":{"enable":true,"limit":3},"tag":{"enable":true,"limit":3}},"plugins":{"aplayer":{"enable":false,"audio":[{"name":null,"artist":null,"url":null,"cover":null},{"name":null,"artist":null,"url":null,"cover":null}]}}};
+    REDEFINE.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+    
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/fontawesome/regular.min.css">
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="小韩的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="menu-wrapper">
+    
+    <div class="menu-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                小韩的博客
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/categories"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        分类
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/tags"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-tag"></i>
+                                        
+                                        标签
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/archives"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-archive"></i>
+                                        
+                                        归档
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown" 
+                                    href="#" onClick="return false;">
+                                    
+                                        
+                                            <i class="fa-regular fa-user"></i>
+                                        
+                                        关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                    
+                                        <li>
+                                        <a href="/about">我
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://gitee.com/victoryhan">GITEE
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://www.cnblogs.com/victoryhan/">博客园
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43704652">CSDN
+                                        </a>
+                                        </li>
+                                    
+                                        <li>
+                                        <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/today-38-74">知乎
+                                        </a>
+                                        </li>
+                                    
+                                    </ul>
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    target="_blank" rel="noopener" href="https://www.google.com"  >
+                                    
+                                        
+                                        GOOGLE
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    target="_blank" rel="noopener" href="https://www.baidu.com"  >
+                                    
+                                        
+                                        百度
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            <li class="menu-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    target="_blank" rel="noopener" href="https://www.github.com"  >
+                                    
+                                        
+                                        GITHUB
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="menu-drawer">
+        <ul class="drawer-menu-list">
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/categories"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                分类
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/tags"  >
+                             
+                                
+                                    <i class="fa-regular fa-tag"></i>
+                                
+                                标签
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        href="/archives"  >
+                             
+                                
+                                    <i class="fa-regular fa-archive"></i>
+                                
+                                归档
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="has-dropdown" 
+                        href="#" onClick="return false;">
+                            
+                                
+                                    <i class="fa-regular fa-user"></i>
+                                
+                                关于&nbsp;<i class="fa-solid fa-chevron-down"></i>
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                              
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" href="/about">我</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://gitee.com/victoryhan">GITEE</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://www.cnblogs.com/victoryhan/">博客园</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43704652">CSDN</a>
+                            </li>
+                        
+                            <li class="dropdown-item flex-center">
+                                <a class="dropdown-item" target="_blank" rel="noopener" href="https://www.zhihu.com/people/today-38-74">知乎</a>
+                            </li>
+                        
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        target="_blank" rel="noopener" href="https://www.google.com"  >
+                             
+                                
+                                GOOGLE
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        target="_blank" rel="noopener" href="https://www.baidu.com"  >
+                             
+                                
+                                百度
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+                
+                    <li class="drawer-menu-item flex-center">
+                        <a class="" 
+                        target="_blank" rel="noopener" href="https://www.github.com"  >
+                             
+                                
+                                GITHUB
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">KMS服务器搭建·Windows·OfficeKMS激活</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/avatar/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">VictoryHan</span>
+                            
+                                <span class="author-label">Lv2</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="pc">2023-02-23 09:50:28</span>
+        <span class="mobile">2023-02-23 09:50</span>
+        <span class="hover-info">创建时间</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="pc">2023-02-23 09:53:19</span>
+            <span class="mobile">2023-02-23 09:53</span>
+            <span class="hover-info">更新时间</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/KMS/">KMS</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Windows/">Windows</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Office/">Office</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-file-word"></i>&nbsp;<span>2.2k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>网上好多windows激活方式及工具，无外乎密钥、KMS、数字授权、电话激活等<br>能用的密钥少之又少，数字授权和主板等硬件绑定，电话激活收费。这些方式要么收费要么安全性堪忧。<br>KMS相较之下是个不错的选择，网上也有好多大佬搭建的给大家用的KMS激活服务器。（网上好多傻瓜式激活工具底层原理就是KMS+免费KMS服务器）<br>但是KMS免费服务器是有一定安全隐患的，谁也不知道互联网的另一端或者中间出什么问题。如果把这个过程放在自己拥有绝对控制权的局域网下安全性就很高–在局域网内搭建KMS服务器激活，或者直接用虚拟机搭建KMS服务器激活。</p>
+<p>感谢大佬~</p>
+<p>项目源地址：<a class="link"   target="_blank" rel="noopener" href="https://github.com/Wind4/vlmcsd" >VLMCSD <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h2 id="KMS简介"><a href="#KMS简介" class="headerlink" title="KMS简介"></a>KMS简介</h2><p>Key Management Service（简称:KMS），这个功能是在Windows Vista之后的产品中的一种新型产品激活机制，目的是Microsoft更好的遏制非法软件授权行为(盗版)。<br>由于Windows VL都是为批量激活而诞生，所以在一个激活单位中肯定会有很多台配置相等的计算机，并用一个服务器建立起一个局域网（LAN），而KMS正好利用这一点，它要求局域网中必须有一台KMS服务器，KMS服务器的作用是给局域网中的所有计算机的操作系统定周期(一般是180天)提供一个随机的激活ID(不同于产品激活密钥)，然后计算机里面的KMS服务就会自动将系统激活，实现正常的系统软件服务与操作。<br>能够通过KMS进行激活的一般称为VL版,即VOLUME授权版，一般不会单独在零售市场进行发售，一般是直接向企业提供电子ISO映像进行批量授权安装，基于对KMS原理研究成果，我们可以自行搭建KMS激活服务器，实现每180天一次的自动激活，使得系统一直保持激活状态。<br>KMS服务器的工作原理很快被某些大神研究出来，于是，大神写出了模拟KMS服务端的程序，现在公网上有很多提供kms服务的服务器，只要你能跟这些服务器保持周期性的连接，你就可以用他们激活微软产品，并且保持永久激活。当然，由于大神研究出来的这些模拟服务端都是免费开源的，你完全可以自己架设一个这种服务器。</p>
+<h2 id="相关资源及要求"><a href="#相关资源及要求" class="headerlink" title="相关资源及要求"></a>相关资源及要求</h2><p><a class="link"   target="_blank" rel="noopener" href="https://msdn.itellyou.cn/" >Windows&amp;Office&amp;Viso镜像下载 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/Wind4/vlmcsd/releases" >KMS服务器所需要的文件 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://www.centos.org/download/" >CentOS7镜像下载 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br><strong>Ip设置为静态Ip</strong><br><strong>将服务器所需要的文件上传到服务器，并解压</strong><br><strong>被激活的Windows&amp;Office必须为VOL版本</strong></p>
+<h2 id="服务搭建"><a href="#服务搭建" class="headerlink" title="服务搭建"></a>服务搭建</h2><p>永久关闭SELinux<br><code>sed -i &#39;s/^SELINUX=.*/#&amp;/;s/^SELINUXTYPE=.*/#&amp;/;/SELINUX=.*/a SELINUX=disabled&#39; /etc/sysconfig/selinux &amp;&amp; /usr/sbin/setenforce 0</code><br>将需要的文件改名方便后续操作（在文件存放文件夹下）<br><code>mv  binaries/Linux/intel/static/vlmcsd-x64-musl-static  KMS-server</code><br>赋予权限<br><code>chmod u+x /usr/local/KMS-server</code><br>并移动到指定位置<br><code>mv KMS-server /usr/local</code><br>执行程序<br><code>/usr/local/KMS-server</code><br>防火墙设置<br><code>firewall-cmd --zone=public --add-port=1688/tcp --permanent</code><br><code>firewall-cmd --reload</code><br>设置服务开机启动<br><code>echo &quot;/usr/local/KMS-server&quot; &gt;&gt; /etc/rc.d/rc.local</code></p>
+<h2 id="Windows激活"><a href="#Windows激活" class="headerlink" title="Windows激活"></a>Windows激活</h2><p>在需要激活的windows上以管理员身份打开cmd<br>如果不知道自己的系统是什么版本，可以用以下命令查询<br><code>wmic os get caption</code><br>以下命令为激活操作</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">slmgr.vbs -upk //此命令清除原来镜像自带的密钥</span><br><span class="line">slmgr.vbs -ipk XXXXX-XXXXX-XXXXX-XXXXX-XXXXX //填入自己Windows版本对应的密钥</span><br><span class="line">slmgr.vbs -skms 192.168.60.128 //这个IP地址是你KMS服务器的地址</span><br><span class="line">slmgr.vbs -ato</span><br><span class="line">slmgr.vbs -dlv</span><br></pre></td></tr></table></figure></div>
+<p>企业版镜像一般会自带一个密钥，可以先试试镜像自带的密钥能不能使，直接执行最后两条命令。如果不能使，到这<a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys" >Windows官方文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>查询密钥后再依次执行以上激活操作命令。<br>如果不想用KMS激活了，可以重置回未激活的状态</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">slmgr.vbs -ckms  //清除系统KMS信息</span><br><span class="line">slmgr.vbs -rearm //重置计算机的授权状态</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="Office-amp-Viso激活"><a href="#Office-amp-Viso激活" class="headerlink" title="Office&amp;Viso激活"></a>Office&amp;Viso激活</h2><p><a class="link"   target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/deployoffice/vlactivation/gvlks" >Office&amp;Viso官方文档 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>查询密钥后再依次执行以上激活操作命令。</p>
+<h3 id="Office激活"><a href="#Office激活" class="headerlink" title="Office激活"></a>Office激活</h3><p>进入到<code>office安装目录/office1x（office16是office2016，office15就是2013，office14就是2010.）</code><br>例如我的office版本是office2016，路径就是<code>C:\Program Files (x86)\Microsoft Office\Office16</code><br>设置密钥<br><code>cscript ospp.vbs /inpkey:XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99</code><br>设置KMS服务器<br><code>cscript ospp.vbs /sethst:192.168.60.128</code><br>激活<br><code>cscript ospp.vbs /act</code><br>查看版本信息&amp;激活状态<br><code>cscript ospp.vbs /dstatus</code><br>查看激活记录<br><code>cscript ospp.vbs /dhistorykms</code></p>
+<p>附：<br>Office2016如果出现如下图错误</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2023/02/23/KMS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%C2%B7Windows%C2%B7OfficeKMS%E6%BF%80%E6%B4%BB/01.png"
+                      class="" title="img"
+                >
+
+<p>将以下内容编辑为bat（例如：1.bat）文件并在<code>C:\Program Files (x86)\Microsoft Office\root\Licenses16</code>文件夹下执行。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">:ADMIN</span><br><span class="line">openfiles &gt;nul 2&gt;nul ||(</span><br><span class="line">echo CreateObject^(&quot;Shell.Application&quot;^).ShellExecute &quot;%~s0&quot;, &quot;&quot;, &quot;&quot;, &quot;runas&quot;, 1 &gt;&gt; &quot;%temp%\getadmin.vbs&quot;</span><br><span class="line">&quot;%temp%\getadmin.vbs&quot; &gt;nul 2&gt;&amp;1</span><br><span class="line">goto:eof</span><br><span class="line">)</span><br><span class="line">del /f /q &quot;%temp%\getadmin.vbs&quot; &gt;nul 2&gt;nul</span><br><span class="line"></span><br><span class="line">for /f &quot;tokens=6 delims=[]. &quot; %%G in (&#x27;ver&#x27;) do set win=%%G</span><br><span class="line"></span><br><span class="line">setlocal</span><br><span class="line"></span><br><span class="line">set OPPKEY=XQNVK-8JYDB-WJ9W3-YJ8YR-WFG99</span><br><span class="line">set PPKEY=YG9NW-3K39V-2T3HJ-93F3Q-G83KT</span><br><span class="line">set VPKEY=PD3PC-RHNGV-FXJ29-8JK7D-RJRJK</span><br><span class="line">set S4BKEY=869NQ-FJ69K-466HW-QYCP2-DDBV6</span><br><span class="line"></span><br><span class="line">pushd &quot;%~dp0&quot;</span><br><span class="line">Title Office 2016 Retail to Volume License Converter</span><br><span class="line"></span><br><span class="line">SET OfficePath=%ProgramFiles%\Microsoft Office</span><br><span class="line">if not exist &quot;%OfficePath%\root\Licenses16&quot; SET OfficePath=%ProgramFiles(x86)%\Microsoft Office</span><br><span class="line">if not exist &quot;%OfficePath%\root\Licenses16&quot; (</span><br><span class="line">	echo Could not find the license files for Office 2016!</span><br><span class="line">	pause</span><br><span class="line">	goto :eof</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">echo Press Enter to start VL-Conversion...</span><br><span class="line">echo.</span><br><span class="line">pause</span><br><span class="line">echo.</span><br><span class="line">cd /D &quot;%SystemRoot%\System32&quot;</span><br><span class="line"></span><br><span class="line">if %win% GEQ 9200 (</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms&quot;</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms&quot;</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms&quot;</span><br><span class="line"></span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms&quot;</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms&quot;</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms&quot;</span><br><span class="line"></span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms&quot;</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms&quot;</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms&quot;</span><br><span class="line"></span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\SkypeforBusinessVL_KMS_Client-ppd.xrm-ms&quot;</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\SkypeforBusinessVL_KMS_Client-ul.xrm-ms&quot;</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\SkypeforBusinessVL_KMS_Client-ul-oob.xrm-ms&quot;</span><br><span class="line"></span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\client-issuance-bridge-office.xrm-ms</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\client-issuance-root.xrm-ms</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\client-issuance-root-bridge-test.xrm-ms</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\client-issuance-stil.xrm-ms</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\client-issuance-ul.xrm-ms</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\client-issuance-ul-oob.xrm-ms</span><br><span class="line">	cscript slmgr.vbs /ilc &quot;%OfficePath%\root\Licenses16\pkeyconfig-office.xrm-ms</span><br><span class="line">)</span><br><span class="line"> if %win% LSS 9200 (</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\ProPlusVL_KMS_Client-ppd.xrm-ms&quot;</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\ProPlusVL_KMS_Client-ul.xrm-ms&quot;</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\ProPlusVL_KMS_Client-ul-oob.xrm-ms&quot;</span><br><span class="line"></span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\ProjectProVL_KMS_Client-ppd.xrm-ms&quot;</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\ProjectProVL_KMS_Client-ul-oob.xrm-ms&quot;</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\ProjectProVL_KMS_Client-ul.xrm-ms&quot;</span><br><span class="line"></span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\VisioProVL_KMS_Client-ppd.xrm-ms&quot;</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\VisioProVL_KMS_Client-ul-oob.xrm-ms&quot;</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\VisioProVL_KMS_Client-ul.xrm-ms&quot;0</span><br><span class="line"></span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\SkypeforBusinessVL_KMS_Client-ppd.xrm-ms&quot;</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\SkypeforBusinessVL_KMS_Client-ul.xrm-ms&quot;</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\SkypeforBusinessVL_KMS_Client-ul-oob.xrm-ms&quot;</span><br><span class="line"></span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\client-issuance-bridge-office.xrm-ms</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\client-issuance-root.xrm-ms</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\client-issuance-root-bridge-test.xrm-ms</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\client-issuance-stil.xrm-ms</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\client-issuance-ul.xrm-ms</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\client-issuance-ul-oob.xrm-ms</span><br><span class="line">	cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inslic:&quot;%OfficePath%\root\Licenses16\pkeyconfig-office.xrm-ms</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">for %%a in (%OPPKEY% %PPKEY% %VPKEY% %S4BKEY%) do cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /inpkey:%%a</span><br><span class="line">cscript &quot;%OfficePath%\Office16\ospp.vbs&quot; /act</span><br><span class="line"></span><br><span class="line">echo.</span><br><span class="line">echo Retail to Volume License conversion finished.</span><br><span class="line">echo.</span><br><span class="line">pause</span><br></pre></td></tr></table></figure></div>
+
+
+<h3 id="Viso"><a href="#Viso" class="headerlink" title="Viso"></a>Viso</h3><p>除了密钥不同外，操作完全相同</p>
+<p><strong>每180天开启服务器以实现自动激活续时</strong></p>
+<p>天上不会掉馅饼，想要最大程度保证安全，就得从每个小细节抓起。<br>如果对安全性没啥要求，网上随便找个激活工具方便快捷，hahahaha~</p>
+<center>
+
+<p>如果您乐意，感谢支持~</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2023/02/23/KMS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%C2%B7Windows%C2%B7OfficeKMS%E6%BF%80%E6%B4%BB/02.jpg"
+                      class="" title="微信赞赏码"
+                >
+
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/2023/02/23/KMS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%C2%B7Windows%C2%B7OfficeKMS%E6%BF%80%E6%B4%BB/03.jpg"
+                      class="" title="支付宝收款码"
+                >
+
+</center>
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：KMS服务器搭建·Windows·OfficeKMS激活</li>
+        <li>本文作者：VictoryHan</li>
+        <li>创建时间：2023-02-23 09:50:28</li>
+        <li>
+            本文链接：https://victoryhan.top/2023/02/23/KMS服务器搭建·Windows·OfficeKMS激活/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/KMS/">#KMS</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Windows/">#Windows</a>&nbsp;
+                        </li>
+                    
+                        <li class="tag-item">
+                            <a href="/tags/Office/">#Office</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/02/24/Django%E6%8A%A5%E9%94%99%E7%AC%94%E8%AE%B0/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Django报错笔记</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/02/23/HDFS%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">HDFS操作方法</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;评论
+    </div>
+    
+
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-pjax>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'waline-peach-nine.vercel.app',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
+    
+</div>
+
+                </div>
+            
+        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">KMS服务器搭建·Windows·OfficeKMS激活</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%B7%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">起因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KMS%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">KMS简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90%E5%8F%8A%E8%A6%81%E6%B1%82"><span class="nav-number">3.</span> <span class="nav-text">相关资源及要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA"><span class="nav-number">4.</span> <span class="nav-text">服务搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Windows%E6%BF%80%E6%B4%BB"><span class="nav-number">5.</span> <span class="nav-text">Windows激活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Office-amp-Viso%E6%BF%80%E6%B4%BB"><span class="nav-number">6.</span> <span class="nav-text">Office&amp;Viso激活</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Office%E6%BF%80%E6%B4%BB"><span class="nav-number">6.1.</span> <span class="nav-text">Office激活</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Viso"><span class="nav-number">6.2.</span> <span class="nav-text">Viso</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
+        
+    </div>
+</div>
+
+
+                
+
+            </div>
+
+
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2023</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-regular fa-computer-classic"></i>&nbsp;&nbsp;<a href="/">VictoryHan</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br> 
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v1.1.2</a>
+        </div>
+        
+        
+        
+            <div id="start_time_div" style="display:none">
+                2023/2/18 16:43:00
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="unfolded-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="fa-regular fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="folded-tools-list">
+        <li class="right-bottom-tools tool-toggle-show flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+
+</main>
+
+
+
+<script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/utils.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/main.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/layouts/menu-shrink.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/go-top-bottom.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/dark-light-toggle.js"></script>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/local-search.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/code-block.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/layouts/lazyload.js"></script>
+
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/runtime.js"></script>
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/layouts/odometer.min.js"></script>
+    <link rel="stylesheet" href="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/assets/odometer-theme-minimal.css">
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/tools/toc-toggle.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/libs/anime.min.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/layouts/toc.js"></script><script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/plugins/tabs.js"></script>
+    
+    
+</div>
+
+
+    <script src="//evan.beee.top/projects/hexo-theme-redefine/v1.1.2/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            REDEFINE.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            REDEFINE.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            REDEFINE.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
+</html>
